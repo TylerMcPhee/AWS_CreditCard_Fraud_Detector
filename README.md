@@ -35,7 +35,6 @@ This project implements a machine learning pipeline for detecting credit card fr
 - Transforms input into CSV format and calls SageMaker endpoint.
 - Returns predicted class label (fraud/non-fraud).
 - API Gateway exposes Lambda function as a REST API.
-## Setup Instructions
 
 ### Prerequisites
 
