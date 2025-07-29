@@ -1,0 +1,90 @@
+# Credit Card Fraud Detection with AWS SageMaker XGBoost
+
+## Overview
+
+This project implements a machine learning pipeline for detecting credit card fraud using AWS SageMaker's XGBoost algorithm. It covers data preprocessing, model training, deployment as a real-time endpoint, and inference via an AWS Lambda function exposed through API Gateway.
+
+---
+
+## Project Components
+
+### 1. Data Preprocessing
+
+- Load credit card transaction data (`creditcards.csv`).
+- Shuffle and scale the `Amount` feature using MinMaxScaler.
+- Address class imbalance with `RandomOverSampler`.
+- Split data into training and testing sets.
+- Save processed datasets as CSV files without headers.
+- Upload CSV files to an S3 bucket for SageMaker access.
+
+### 2. Model Training
+
+- Use SageMaker's XGBoost built-in algorithm.
+- Configure estimator with hyperparameters (e.g., max_depth, eta).
+- Train model on the balanced training data stored in S3.
+- Validate using test data.
+
+### 3. Model Deployment
+
+- Deploy the trained XGBoost model to a SageMaker real-time endpoint.
+- Endpoint serves inference requests.
+
+### 4. Inference via AWS Lambda & API Gateway
+
+- Lambda function receives JSON input with 31 features.
+- Transforms input into CSV format and calls SageMaker endpoint.
+- Returns predicted class label (fraud/non-fraud).
+- API Gateway exposes Lambda function as a REST API.
+## Setup Instructions
+
+### Prerequisites
+
+- AWS account with SageMaker, S3, Lambda, and API Gateway permissions
+- Python 3.x environment with packages:
+  - `boto3`
+  - `pandas`
+  - `scikit-learn`
+  - `imbalanced-learn`
+  - `sagemaker`
+
+### Step 1: Prepare and Upload Data
+
+1. Place `creditcards.csv` in `data/` directory.
+2. Run `preprocess_and_upload.py` to preprocess data and upload train/test CSVs to S3.
+
+### Step 2: Train the Model
+
+Run `train_xgboost.py` to start the SageMaker training job with specified hyperparameters.
+
+### Step 3: Deploy the Model
+
+Run `deploy_xgboost.py` to deploy the trained model and create an endpoint.
+
+### Step 4: Setup Lambda & API Gateway
+
+- Deploy `lambda_function.py` to AWS Lambda.
+- Configure Lambda execution role with SageMaker invoke permissions.
+- Create an API Gateway REST API to trigger the Lambda function.
+
+---
+
+## Usage Example
+
+Sample JSON payload sent to API Gateway:
+
+```json
+{
+  "x1": 77967.0,
+  "x2": 1.1499,
+  "x3": 0.0202,
+  ...
+  "x31": 0.0
+}
+Response from API:
+
+json
+Copy
+Edit
+{
+  "prediction": 1
+}
