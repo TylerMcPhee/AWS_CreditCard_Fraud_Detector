@@ -72,7 +72,6 @@ Run `deploy_xgboost.py` to deploy the trained model and create an endpoint.
 
 Sample JSON payload sent to API Gateway:
 
-```json
 {
   "x1": 77967.0,
   "x2": 1.1499,
@@ -80,11 +79,8 @@ Sample JSON payload sent to API Gateway:
   ...
   "x31": 0.0
 }
-Response from API:
 
-json
-Copy
-Edit
+Response from API:
 {
-  "prediction": 1
+  "prediction": 1 (meaning it detects fraud)
 }
