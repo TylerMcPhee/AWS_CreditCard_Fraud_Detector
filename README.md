@@ -11,7 +11,7 @@ This project implements a machine learning pipeline for detecting credit card fr
 ### 1. Data Preprocessing
 
 - Load credit card transaction data (`creditcards.csv`).
-- Shuffle and scale the `Amount` feature using MinMaxScaler.
+- Shuffle data
 - Address class imbalance with `RandomOverSampler`.
 - Split data into training and testing sets.
 - Save processed datasets as CSV files without headers.
