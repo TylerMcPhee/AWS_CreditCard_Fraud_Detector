@@ -57,10 +57,11 @@ Sample JSON payload sent to API Gateway:
   "x2": 1.1499,
   "x3": 0.0202,
   ...
-  "x31": 0.0
+  "x30": 1.0975
 }
 
 Response from API:
 {
-  "prediction": 1 (meaning it detects fraud)
+  "prediction": 1 
 }
+(meaning it detects fraud)
