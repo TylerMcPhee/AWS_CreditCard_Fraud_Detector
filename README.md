@@ -47,25 +47,6 @@ This project implements a machine learning pipeline for detecting credit card fr
   - `imbalanced-learn`
   - `sagemaker`
 
-### Step 1: Prepare and Upload Data
-
-1. Place `creditcards.csv` in `data/` directory.
-2. Run `preprocess_and_upload.py` to preprocess data and upload train/test CSVs to S3.
-
-### Step 2: Train the Model
-
-Run `train_xgboost.py` to start the SageMaker training job with specified hyperparameters.
-
-### Step 3: Deploy the Model
-
-Run `deploy_xgboost.py` to deploy the trained model and create an endpoint.
-
-### Step 4: Setup Lambda & API Gateway
-
-- Deploy `lambda_function.py` to AWS Lambda.
-- Configure Lambda execution role with SageMaker invoke permissions.
-- Create an API Gateway REST API to trigger the Lambda function.
-
 ---
 
 ## Usage Example
