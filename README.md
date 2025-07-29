@@ -57,7 +57,7 @@ Sample JSON payload sent to API Gateway:
   "x2": 1.1499,
   "x3": 0.0202,
   ...
-  "x30": 1.0975
+  "x30": 36.22
 }
 
 Response from API:
